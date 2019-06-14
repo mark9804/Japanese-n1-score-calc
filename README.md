@@ -9,7 +9,7 @@
 * 比传统的估分方式更加精确，会判断单科/总分是否合格。
 * 考虑到了做卷子时没有包含听力的情况。
 
-![Demo](src\demo.png)
+![Demo](https://github.com/Mark9804/Japanese-n1-score-calc/raw/master/src/demo.png)
 
 ## 计算方法
 
