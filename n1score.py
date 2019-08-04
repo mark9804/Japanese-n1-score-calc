@@ -45,7 +45,7 @@ print('词汇语法部分得分' + str(int(round(part1_score))) + '/60,' + str(i
           int(round(part1_score)) + int(round(part2_score))) + ' 分')
 
 if_listening = input('包含听力吗?(y/N):')
-if if_listening.title() == 'Y':
+if if_listening.upper() == 'Y':
     pass
 else:
     quit()
