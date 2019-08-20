@@ -1,7 +1,7 @@
 # coding=utf-8
 
 parts = ['词汇语法', '读解', '听解']
-ispassed = True
+isPass = True
 
 
 def error(a):
@@ -10,16 +10,16 @@ def error(a):
 
 
 def is_pass(score, is_total):
-    global ispassed
+    global isPass
     if not is_total and score >= 19:
         return '合格;'
     elif not is_total and score < 19:
-        ispassed = False
+        isPass = False
         return '不合格;'
-    elif is_total and score >= 100 and ispassed:
-        return '合格;'
+    elif is_total and score >= 100 and isPass:
+        return '合格。'
     else:
-        return '不合格;'
+        return '不合格。'
 
 
 for questions in range(1, 14):
@@ -30,13 +30,17 @@ for questions in range(1, 14):
 try:
     part1 = (6 - int(q1)) + (7 - int(q2)) + (6 - int(q3)) + (12 - 2 * int(q4)) + (10 - int(q5)) + (5 - int(q6)) + (
             10 - 2 * int(q7))
-    part1_score = part1 / 56 * 60
+    part1_score = round(part1 / 56 * 60)
+    if part1_score < 0:
+        error(0)
 except:
     error(0)
 try:
     part2 = (8 - 2 * int(q8)) + (18 - 2 * int(q9)) + (12 - 3 * int(q10)) + (4 - 2 * int(q11)) + (12 - 3 * int(q12)) + (
             4 - 2 * int(q13))
-    part2_score = part2 / 58 * 60
+    part2_score = round(part2 / 58 * 60)
+    if part2_score < 0:
+        error(1)
 except:
     error(1)
 print('词汇语法部分得分' + str(int(round(part1_score))) + '/60,' + str(is_pass(int(round(part1_score)), False)),
@@ -57,9 +61,13 @@ for questions_listening in range(1, 6):
         locals()[str(question_order_listening)] = 0
 try:
     part3 = (12 - 2 * int(ql1)) + (7 - int(ql2)) + (12 - 2 * int(ql3)) + (13 - int(ql4)) + (12 - 3 * int(ql5))
-    part3_score = part3 / 56 * 60
+    part3_score = round(part3 / 56 * 60)
+    if part3_score < 0:
+        error(2)
 except:
     error(2)
+
 total = int(round(part1_score)) + int(round(part2_score)) + int(round(part3_score))
+
 print('听解部分得分' + str(int(round(part3_score))) + '/60,' + str(is_pass(int(round(part3_score)), False)) + '\n总分' + str(
     total) + '分,' + str(is_pass(total, True)))
